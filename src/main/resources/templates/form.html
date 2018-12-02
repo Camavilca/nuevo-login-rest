@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="/layout/template :: header" >
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<nav th:replace="/layout/template :: navegacion"></nav>
+			<div class="card">
+				<div class="card-header" th:text="${titulo}"></div>
+				<div class="card-body">
+					<form th:action="@{/form}" th:object="${documento}" method="POST" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="titulo">Titulo del Proyecto</label> <input
+								type="text" class="form-control" th:field="*{titulo}" name="titulo">
+						</div>
+						<div class="form-group">
+							<label for="descripcion">Descripcion del Proyecto</label>
+							<textarea class="form-control" th:field="*{descripcion}" name="descripcion" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="archivo">Archivo</label>
+							<input type="file" class="form-control" name="file">
+						</div>
+						<input type="submit" th:value="${btn}" class="btn btn-primary">
+					</form>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+</body>
+</html>
